@@ -1,0 +1,172 @@
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+$colors
+    green: #094
+    blue: #38c
+    orange: #f70
+    blue: #6492c0
+    light_blue: #3B99FC
+    green: #66c184
+    brown: #bd673d
+    red: #e06666
+    pink: #ff6699
+    purple: #9013FE
+    orange: #F5A623
+    light_yellow: #fff5dc
+    medium_gray: #888
+    light_gray: #bbb
+    lighter_gray: #eee
+    dark_tan: #58584d
+
+$padding
+    small: 5px
+    default: 10px
+
+$sizes
+    sidebar: 300px
+
+body
+    font-family: "Menlo"
+    font-size: 15px
+    padding-right: $sizes.sidebar
+
+.phrase
+    color: $colors.blue
+
+.variable
+    color: $colors.orange
+
+.synonym
+    color: $colors.green
+
+.content
+    padding: 20px
+
+.sidebar
+    position: fixed
+    background: #f5f5f5
+    top: 0
+    bottom: 0
+    right: 0
+    width: $sizes.sidebar
+    padding: 20px
+
+h2
+    font-size: 1.1em
+    margin-bottom: 10px
+    margin-top: 20px
+    &:first-child
+        margin-top: 0
+
+@-webkit-keyframes spinIn
+    from
+        -webkit-transform: rotate(0deg)
+    to
+        -webkit-transform: rotate(360deg)
+
+.row
+    display: flex
+    align-items: center
+    margin-top: 20px
+    margin-bottom: 10px
+
+    h2
+        margin-bottom: 0
+        flex-grow: 1
+
+a.refresh
+    cursor: pointer
+    display: block
+    padding: 10px
+    text-align: center
+    background: $colors.blue
+    color: #fff
+    border-radius: 3px
+
+    &:hover
+        background: color($colors.blue shade(5%))
+
+    &.refreshing
+        background: color($colors.blue shade(10%))
+        i
+            -webkit-animation: spinIn 0.3s 1
+
+
+.object-editor
+    .edit-value, &.edit-value
+        display: inline-block
+
+    .adder
+        margin-left: calc($padding.default / 2 * -1)
+
+    .edit-object, &.edit-object
+        padding-left: $padding.default
+        border-left: 3px solid $colors.purple
+
+        > .adder
+            color: $colors.purple
+
+    .extra-object
+        color: $colors.purple
+
+    .edit-array, &.edit-array
+        padding-left: $padding.default
+        border-left: 3px solid $colors.orange
+
+        > .adder
+            color: $colors.orange
+
+    .extra-array
+        color: $colors.orange
+
+    .editable-field
+        display: inline-block
+        margin-right: $padding.default
+
+    .row
+        position: relative
+
+    .actions
+        position: absolute
+        top: 0
+        right: 0
+
+    .editable-field.key
+        font-weight: bold
+        color: inherit !important
+
+    .delete
+        color: red
+        font-size: 12px
+
+    .edited [contenteditable]
+        outline-color: $colors.light_yellow
+
+    .new-row [contenteditable]
+        display: inline-block
+        outline-color: $colors.light_yellow
+
+        &[disabled]
+            background: transparent
+
+    .invalid
+        background: red
+
+    [contenteditable]
+        display: inline-block
+
+    .type-string
+        color: $colors.blue
+    .value.type-string
+        &:before
+            content: '"'
+        &:after
+            content: '"'
+    .type-number
+        color: $colors.green
+    .type-boolean
+        color: $colors.pink
+
